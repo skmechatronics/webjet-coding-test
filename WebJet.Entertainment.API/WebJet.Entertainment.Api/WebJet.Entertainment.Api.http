@@ -1,0 +1,6 @@
+@WebJet.Entertainment.Api_HostAddress = http://localhost:5224
+
+GET {{WebJet.Entertainment.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
