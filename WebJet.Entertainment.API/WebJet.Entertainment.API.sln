@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		Nuget.config = Nuget.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebJet.Entertainment.Api", "WebJet.Entertainment.Api\WebJet.Entertainment.Api.csproj", "{724E46AF-6AF2-4E1F-A158-FE62A4C6C406}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebJet.Entertainment.Services", "WebJet.Entertainment.Services\WebJet.Entertainment.Services.csproj", "{0FDE8700-62C6-4D92-AA8E-52AF0C251242}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebJet.Entertainment.Poc", "WebJet.Entertainment.Poc\WebJet.Entertainment.Poc.csproj", "{EB913A8F-00C3-5AFF-BAB9-6C75ABC31E79}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PoC", "PoC", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebJet.Entertainment.Services.Tests", "WebJet.Entertainment.Services.Tests\WebJet.Entertainment.Services.Tests.csproj", "{0CDF985E-9715-4D2A-832B-69BE442950D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F6DA7BB3-8E6C-46EC-9E10-E8BF3425353D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{724E46AF-6AF2-4E1F-A158-FE62A4C6C406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724E46AF-6AF2-4E1F-A158-FE62A4C6C406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724E46AF-6AF2-4E1F-A158-FE62A4C6C406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724E46AF-6AF2-4E1F-A158-FE62A4C6C406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FDE8700-62C6-4D92-AA8E-52AF0C251242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FDE8700-62C6-4D92-AA8E-52AF0C251242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FDE8700-62C6-4D92-AA8E-52AF0C251242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FDE8700-62C6-4D92-AA8E-52AF0C251242}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB913A8F-00C3-5AFF-BAB9-6C75ABC31E79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB913A8F-00C3-5AFF-BAB9-6C75ABC31E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB913A8F-00C3-5AFF-BAB9-6C75ABC31E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB913A8F-00C3-5AFF-BAB9-6C75ABC31E79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CDF985E-9715-4D2A-832B-69BE442950D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CDF985E-9715-4D2A-832B-69BE442950D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CDF985E-9715-4D2A-832B-69BE442950D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CDF985E-9715-4D2A-832B-69BE442950D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EB913A8F-00C3-5AFF-BAB9-6C75ABC31E79} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{0CDF985E-9715-4D2A-832B-69BE442950D1} = {F6DA7BB3-8E6C-46EC-9E10-E8BF3425353D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A605CA14-33C8-4B93-8CBC-2BFDD64826F9}
+	EndGlobalSection
+EndGlobal
