@@ -10,6 +10,7 @@ namespace WebJet.Entertainment.Api;
 
 public class Startup
 {
+    private const string DevCorsPolicy = nameof(DevCorsPolicy);
     private readonly IConfiguration _configuration;
 
     public Startup(IConfiguration configuration)
@@ -63,6 +64,16 @@ public class Startup
             options.EnableAnnotations();
         });
 
+        services.AddCors(options =>
+        {
+            options.AddPolicy(DevCorsPolicy, policy =>
+            {
+                policy.WithOrigins("*")
+                      .AllowAnyHeader()
+                      .AllowAnyMethod();
+            });
+        });
+
         services.AddHealthChecks()
             .AddCheck<BasicHealthCheck>(nameof(BasicHealthCheck), tags: [BasicHealthCheck.Tag]);
 
@@ -76,6 +87,7 @@ public class Startup
         {
             app.UseSwagger(options => options.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi3_0);
             app.UseSwaggerUI();
+            app.UseCors(DevCorsPolicy   );
         }
 
         app.UseHttpsRedirection();
