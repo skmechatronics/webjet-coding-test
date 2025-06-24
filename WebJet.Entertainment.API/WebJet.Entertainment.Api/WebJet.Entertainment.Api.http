@@ -1,6 +1,11 @@
-@WebJet.Entertainment.Api_HostAddress = http://localhost:5224
+@WebJet.Entertainment.Api_HostAddress = https://localhost:7090
 
-GET {{WebJet.Entertainment.Api_HostAddress}}/weatherforecast/
+### Get all movies from all sources
+GET {{WebJet.Entertainment.Api_HostAddress}}/api/movies/movie-collection
 Accept: application/json
 
 ###
+
+### Get cheapest movie metadata for a given title
+GET {{WebJet.Entertainment.Api_HostAddress}}/api/movies/Inception/price-comparison
+Accept: application/json
