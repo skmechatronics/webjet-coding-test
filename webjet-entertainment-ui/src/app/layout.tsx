@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className="min-h-screen bg-gray-100 text-gray-900">
-        <header className="border-b bg-white">
+        <header className="border-b bg-red-100 text-center">
           <div className="max-w-6xl mx-auto px-4 py-4 flex justify-center">
             <h1 className="text-xl font-semibold tracking-tight">
               WebJet Entertainment System
