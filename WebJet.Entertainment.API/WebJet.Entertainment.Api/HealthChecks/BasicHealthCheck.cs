@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using System.Net.Mime;
 
 namespace WebJet.Entertainment.Api.HealthChecks;
 
@@ -32,7 +33,7 @@ public class BasicHealthCheck : IHealthCheck
 
     public static Task ResponseWriter(HttpContext context, HealthReport report)
     {
-        context.Response.ContentType = "application/json";
+        context.Response.ContentType = MediaTypeNames.Application.Json;
         var build = report.Entries.Values.FirstOrDefault().Description ?? DefaultBuildNumber;
         return context.Response.WriteAsJsonAsync(new { build });
     }

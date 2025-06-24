@@ -2,6 +2,7 @@
 using WebJet.Entertainment.Services.Interfaces;
 using WebJet.Entertainment.Services.ApiModels;
 using WebJet.Entertainment.Services.UiModels;
+using System.Net.Mime;
 
 namespace WebJet.Entertainment.Api.HealthChecks;
 
@@ -112,7 +113,7 @@ public class AdvancedHealthChecks : IHealthCheck
 
     public static Task ResponseWriter(HttpContext context, HealthReport report)
     {
-        context.Response.ContentType = "application/json";
+        context.Response.ContentType = MediaTypeNames.Application.Json;
 
         var entry = report.Entries.First().Value;
 
