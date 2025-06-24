@@ -1,8 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System.Net.Http.Json;
 using System.Text.Json;
-using WebJet.Entertainment.Services.ApiModels;
 using WebJet.Entertainment.Services.UiModels;
 
 namespace WebJet.Entertainment.Services.ExternalProxy;

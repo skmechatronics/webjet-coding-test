@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.OpenApi.Models;
 using WebJet.Entertainment.Api.HealthChecks;
 using WebJet.Entertainment.Services;
 using WebJet.Entertainment.Services.Configuration;
@@ -51,9 +52,18 @@ public class Startup
             options.LowercaseUrls = true;
         });
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
+        services.AddSwaggerGen(options =>
+        {
+            options.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Version = "v1",
+                Title = "WebJet Entertainment API",
+                Description = "In-flight streaming entertainment, for your viewing pleasure.",
+            });
+            options.EnableAnnotations();
+        });
 
-        services.AddHealthChecks() // First group
+        services.AddHealthChecks()
             .AddCheck<BasicHealthCheck>(nameof(BasicHealthCheck), tags: [BasicHealthCheck.Tag]);
 
         services.AddHealthChecks()
@@ -64,7 +74,7 @@ public class Startup
     {
         if (env.IsDevelopment())
         {
-            app.UseSwagger();
+            app.UseSwagger(options => options.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi3_0);
             app.UseSwaggerUI();
         }
 
