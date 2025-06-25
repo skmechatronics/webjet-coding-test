@@ -2,6 +2,8 @@
 
 import { useEffect, useState, useRef } from 'react';
 import LoadingSpinner from './loading-spinner';
+import PriceComparison from "./movie-metadata/price-comparison";
+import CsvBulletedList from "./movie-metadata/csv-bulleted-list";
 
 type MovieMetadataProps = {
   title: string | null;
@@ -112,7 +114,7 @@ export default function MovieMetadata({ title }: MovieMetadataProps) {
       )}
 
       {metadata && (
-        <div className="bg-red-100 border-red-900 border-t-10 p-6 rounded-lg shadow-md max-w-7xl mx-auto flex gap-8">
+        <div className="bg-red-100 border-red-900 border-t-[10px] p-6 rounded-lg shadow-md max-w-7xl mx-auto flex gap-8">
           {/* Poster left side */}
           {metadata.posterUrl && (
             <img
@@ -132,7 +134,15 @@ export default function MovieMetadata({ title }: MovieMetadataProps) {
               {metadata.title} <span className="text-red-900 text-3xl">({metadata.year})</span>
             </h3>
 
+            <div className="flex flex-col">
+              <div className="whitespace-pre-wrap border-x-4 border-red-800 p-4 rounded text-lg text-gray-800 font-medium italic mt-2 mb-6">
+                {metadata.plot || 'N/A'}
+              </div>
+            </div>
+
+
             <dl className="grid grid-cols-1 gap-y-3 text-gray-700">
+
               <div className="flex justify-between">
                 <dt className="font-semibold">Rated:</dt>
                 <dd>{metadata.rated || 'N/A'}</dd>
@@ -158,21 +168,6 @@ export default function MovieMetadata({ title }: MovieMetadataProps) {
                 <dd>{metadata.director || 'N/A'}</dd>
               </div>
 
-              <div className="flex justify-between inline-block">
-                <dt className="font-semibold">Writers:</dt>
-                <dd>{metadata.writer || 'N/A'}</dd>
-              </div>
-
-              <div className="flex justify-between">
-                <dt className="font-semibold">Actors:</dt>
-                <dd>{metadata.actors || 'N/A'}</dd>
-              </div>
-
-              <div className="flex flex-col">
-                <dt className="font-semibold">Plot:</dt>
-                <dd className="whitespace-pre-wrap">{metadata.plot || 'N/A'}</dd>
-              </div>
-
               <div className="flex justify-between">
                 <dt className="font-semibold">Language:</dt>
                 <dd>{metadata.language || 'N/A'}</dd>
@@ -181,11 +176,6 @@ export default function MovieMetadata({ title }: MovieMetadataProps) {
               <div className="flex justify-between">
                 <dt className="font-semibold">Country:</dt>
                 <dd>{metadata.country || 'N/A'}</dd>
-              </div>
-
-              <div className="flex justify-between">
-                <dt className="font-semibold">Awards:</dt>
-                <dd>{metadata.awards || 'N/A'}</dd>
               </div>
 
               <div className="flex justify-between">
@@ -202,28 +192,28 @@ export default function MovieMetadata({ title }: MovieMetadataProps) {
                 <dt className="font-semibold">Votes:</dt>
                 <dd>{metadata.votes > 0 ? metadata.votes.toLocaleString() : 'N/A'}</dd>
               </div>
+
+
+              <div className="justify-between inline-block">
+                <dt className="font-semibold">Writers:</dt>
+                <dd><CsvBulletedList csv={metadata.writer} /></dd>
+              </div>
+
+              <div>
+                <dt className="font-semibold">Actors:</dt>
+                <dd><CsvBulletedList csv={metadata.actors} /></dd>
+              </div>
+              <div className="inline-block">
+                <dt className="font-semibold">Awards:</dt>
+                <dd>
+                  <CsvBulletedList csv={metadata.awards} separator="." />
+                </dd>
+              </div>
             </dl>
 
-            {metadata.sourcePrices && metadata.sourcePrices.length > 0 && (
-              <div className="mt-8 p-4 bg-gray-50 rounded border">
-                <h4 className="text-lg font-semibold mb-2">Price Comparison</h4>
-                <ul className="space-y-1">
-                  {metadata.sourcePrices.map(({ source, price }, i) => (
-                    <li
-                      key={source}
-                      className={`flex justify-between px-2 py-1 rounded ${
-                        i === 0 ? 'bg-green-100 font-bold' : ''
-                      }`}
-                    >
-                      <span>{source}</span>
-                      <span>${price.toFixed(2)}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-2 text-sm text-green-700 font-semibold">
-                  Cheapest: {metadata.sourcePrices[0].source} at ${metadata.sourcePrices[0].price.toFixed(2)}
-                </p>
-              </div>
+
+            {metadata.sourcePrices && (
+              <PriceComparison sourcePrices={metadata.sourcePrices} />
             )}
           </div>
         </div>
