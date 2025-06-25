@@ -30,3 +30,9 @@ It contains two folders
 	- You will be prompted for the configuration for the backend
 	- If port 3000 is busy, the frontend won't run
 	- If port 7090 is busy, the backend won't run
+
+
+- Note that if running it independently:
+	- appsettings.Development.json is supported
+	- appsettings.json contains the shape required for the configuration
+	- no secrets were committed to the repository
