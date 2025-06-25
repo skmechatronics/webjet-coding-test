@@ -59,7 +59,7 @@ export default function Page() {
   if (errorMovies) return <ErrorScreen message={errorMovies} />;
 
   return (
-    <main className="p-10 max-w-7.5xl mx-auto min-h-screen">
+    <main className="px-10 pb-10 max-w-7.5xl mx-auto min-h-screen">
       <MoviesCollection movies={movies} onSelectMovie={setSelectedTitle} />
       <MovieMetadata title={selectedTitle} />
     </main>

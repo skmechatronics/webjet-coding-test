@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="flex flex-col min-h-screen h-full bg-gray-100 text-gray-900">
         <header className="border-b bg-red-700 text-center text-gray-100">
           <div className="max-w-6xl mx-auto px-4 pb-4 pt-2 flex justify-center">
-            <h1 className="text-3xl font-extrabold tracking-wide text-gray-100 drop-shadow-md">
+            <h1 className="text-3xl font-extrabold tracking-wide text-gray-100 drop-shadow-md underline">
               WebJet Entertainment System
             </h1>
           </div>

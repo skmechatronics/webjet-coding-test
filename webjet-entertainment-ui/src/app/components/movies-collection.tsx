@@ -18,8 +18,8 @@ export default function MoviesCollection({ movies, onSelectMovie }: MoviesCollec
   return (
     <div className="space-y-8">
       <h2
-        className="text-xl font-bold mb-2 text-center"
-        style={{ fontFamily: 'Calibri, sans-serif' }}
+        className="text-3xl mb-2 text-center"
+        style={{ fontFamily: 'Impact,Charcoal,sans-serif' }}
       >
         NOW SHOWING
       </h2>
