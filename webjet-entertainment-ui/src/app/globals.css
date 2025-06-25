@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+/* Scrollbar track */
+.scrollbar-custom::-webkit-scrollbar {
+  height: 24px; /* make scrollbar thicker */
+}
+
+/* Scrollbar thumb */
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #dc2626; /* Tailwind green-400 */
+  border-radius: 6px;
+}
+
+/* Scrollbar track background */
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #fecaca;
+  border-radius: 6px;
+}
+
+:root {
+  --font-geist-sans: 'Geist Sans', system-ui, sans-serif;
+  --font-geist-mono: 'Geist Mono', SFMono-Regular, monospace;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}

@@ -10,7 +10,7 @@ namespace WebJet.Entertainment.Services.ExternalProxy
 
         public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            var s = reader.GetString();
+            var s = reader.GetString(); 
             return DateTime.ParseExact(s, Format, CultureInfo.InvariantCulture);
         }
 
