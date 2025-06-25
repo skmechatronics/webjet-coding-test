@@ -99,7 +99,7 @@ public class Startup
             Predicate = check => check.Tags.Contains(BasicHealthCheck.Tag),
             ResponseWriter = BasicHealthCheck.ResponseWriter
         });
-
+            
         app.MapHealthChecks("/external-health", new HealthCheckOptions
         {
             Predicate = check => check.Tags.Contains(AdvancedHealthChecks.Tag),

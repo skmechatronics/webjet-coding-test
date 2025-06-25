@@ -16,8 +16,18 @@ type MoviesCollectionProps = {
 export default function MoviesCollection({ movies }: MoviesCollectionProps) {
   return (
     <div className="space-y-8">
-      <h2 className="text-xl font-cursive mb-2 text-center">NOW SHOWING</h2>
-      <div className="flex bg-red-100 scrollbar-custom overflow-x-auto space-x-8 h-full items-start">
+      <h2
+        className="text-3xl text-black mb-2 text-center"
+          style={{ fontFamily: 'Impact,Charcoal,sans-serif' }}
+      >
+        NOW SHOWING
+      </h2>
+
+      {/* Add glass effect classes without removing existing ones */}
+      <div
+        className="flex bg-red-100 scrollbar-custom overflow-x-auto space-x-8 h-full items-start
+                   border border-red-100 rounded-lg shadow-lg"
+      >
         {movies.map((movie, idx) => (
           <div
             key={idx}
