@@ -21,7 +21,7 @@ namespace WebJet.Entertainment.Services.Helpers
             return new MovieMetadataModel
             {
                 Title = movieMetadata.Title,
-                //Year = movieMetadata.Year,
+                Year = movieMetadata.Year,
                 Rated = movieMetadata.Rated,
                 Released = movieMetadata.Released,
                 Runtime = movieMetadata.Runtime,
@@ -34,9 +34,9 @@ namespace WebJet.Entertainment.Services.Helpers
                 Country = movieMetadata.Country,
                 Awards = movieMetadata.Awards,
                 PosterUrl = movieMetadata.Poster,
-                //Metascore = movieMetadata.Metascore,
+                Metascore = movieMetadata.Metascore,
                 Rating = movieMetadata.Rating,
-                //Votes = movieMetadata.Votes,
+                Votes = movieMetadata.Votes,
                 SourcePrices = []
             };
         }
