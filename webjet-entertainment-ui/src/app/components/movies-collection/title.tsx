@@ -6,10 +6,12 @@ type TitleProps = {
 export default function Title({ title, year }: TitleProps) {
   return (
     <div className="w-full px-1">
-      <div className="text-sm font-semibold text-gray-800 leading-tight break-words whitespace-normal">
+      <div className="text-base font-bold text-gray-900 leading-tight break-words whitespace-normal h-12 overflow-hidden">
         {title}
       </div>
-      <div className="text-gray-500 text-xs">{year}</div>
+       <div className="mt-2 text-sm font-bold text-white bg-red-700 border-b-4 border-red-900 rounded-md px-2 py-0.5  ">
+         {year}
+       </div>
     </div>
   );
 }
