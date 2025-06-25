@@ -1,4 +1,4 @@
-import Poster from './movies-collection/poster';
+import CarouselPoster from './movies-collection/carousel-poster';
 import Title from './movies-collection/title';
 import Tags from './movies-collection/tags';
 
@@ -38,7 +38,7 @@ export default function MoviesCollection({ movies, onSelectMovie }: MoviesCollec
             }}
             className="my-10 mx-5 max-w-[200px] flex-shrink-0 text-center text-sm transition-transform duration-200 hover:scale-110 hover:z-20 cursor-pointer focus:outline-none focus:ring-2 focus:ring-red-600"
           >
-            <Poster src={movie.posterUrl} alt={movie.title} />
+            <CarouselPoster src={movie.posterUrl} alt={movie.title} />
             <div className="mt-4">
               <Title title={movie.title} year={movie.year} />
               <Tags sources={movie.availableSources} />

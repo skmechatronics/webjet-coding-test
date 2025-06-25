@@ -5,7 +5,7 @@ import LoadingSpinner from './loading-spinner';
 import PriceComparison from './movie-metadata/price-comparison';
 import MetadataTabs from './movie-metadata/metadata-tabs';
 import MetadataTabContent from './movie-metadata/metadata-tab-content';
-import PosterImage from './poster-image';
+import PosterImage from './movie-metadata/poster-image';
 
 type MovieMetadataProps = {
   title: string | null;
@@ -133,7 +133,7 @@ export default function MovieMetadata({ title }: MovieMetadataProps) {
               {metadata.plot || 'N/A'}
             </div>
 
-            <div className="flex-grow w-1/2 min-h-[400px]">
+            <div className="flex-grow min-h-[400px]">
               <MetadataTabs metadata={metadata} />
             </div>
 
