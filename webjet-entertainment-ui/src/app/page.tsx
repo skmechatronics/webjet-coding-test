@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import LoadingSpinner from './components/loading-spinner';
 import MoviesCollection from './components/movies-collection';
 import ErrorScreen from './components/error-screen';
@@ -20,9 +20,13 @@ export default function Page() {
 
   const [selectedTitle, setSelectedTitle] = useState<string | null>(null);
 
+  // retry count and mounted refs to persist across retries
+  const retryCount = useRef(0);
+  const mounted = useRef(true);
+  const timeoutId = useRef<NodeJS.Timeout>();
+
   useEffect(() => {
-    let mounted = true;
-    const start = Date.now();
+    mounted.current = true;
 
     const fetchMovies = async () => {
       try {
@@ -31,32 +35,49 @@ export default function Page() {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         const sorted = data.sort((a: Movie, b: Movie) => b.year - a.year);
-        const elapsed = Date.now() - start;
-        const delay = elapsed < 500 ? 500 - elapsed : 0;
-        setTimeout(() => {
-          if (mounted) {
-            setMovies(sorted);
-            setLoadingMovies(false);
-            setErrorMovies(null);
+        const MinimumRetriesBeforeExtend = 3;
+        const RefreshNormal = 5000;    // 5 seconds
+        const RefreshExtended = 15000; // 15 seconds
+
+
+
+        if (!mounted.current) return;
+
+        setMovies(sorted);
+        setLoadingMovies(false);
+        setErrorMovies(null);
+        retryCount.current = 0; // reset retries on success
+      } catch (err) {
+        if (!mounted.current) return;
+
+        setErrorMovies((err as Error).message);
+        setLoadingMovies(false);
+
+        // Calculate next retry delay
+        retryCount.current++;
+        const delay = retryCount.current < MinimumRetriesBeforeExtend
+          ? RefreshNormal
+          : RefreshExtended;        
+
+        timeoutId.current = setTimeout(() => {
+          if (mounted.current) {
+            setLoadingMovies(true);
+            fetchMovies();
           }
         }, delay);
-      } catch (err) {
-        if (mounted) {
-          setErrorMovies((err as Error).message);
-          setLoadingMovies(false);
-        }
       }
     };
 
     fetchMovies();
 
     return () => {
-      mounted = false;
+      mounted.current = false;
+      if (timeoutId.current) clearTimeout(timeoutId.current);
     };
   }, []);
 
   if (loadingMovies) return <LoadingSpinner />;
-  if (errorMovies) return <ErrorScreen message={errorMovies} />;
+  if (errorMovies) return <ErrorScreen showRetryMessage={true} message="Sorry, we’re having trouble loading the info at the moment." />;
 
   return (
     <main className="px-10 pb-10 max-w-7.5xl mx-auto min-h-screen">

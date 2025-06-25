@@ -6,6 +6,7 @@ import PriceComparison from './movie-metadata/price-comparison';
 import MetadataTabs from './movie-metadata/metadata-tabs';
 import MetadataTabContent from './movie-metadata/metadata-tab-content';
 import PosterImage from './movie-metadata/poster-image';
+import ErrorScreen from './error-screen'
 
 type MovieMetadataProps = {
   title: string | null;
@@ -112,9 +113,8 @@ export default function MovieMetadata({ title }: MovieMetadataProps) {
       aria-atomic="true"
     >
       {loading && <LoadingSpinner />}
-
       {error && (
-        <div className="text-red-600 font-semibold text-center">{error}</div>
+          <ErrorScreen className={"height-1/2"} showRetryMessage={false} message="Sorry we couldn't retrieve the pricing at this time. Please try again shortly." />
       )}
 
       {metadata && (
