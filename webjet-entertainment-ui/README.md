@@ -10,3 +10,4 @@
 - Custom elements such as a large scroll bar for ease of use
 - Replacement posters when the URL can't be fetched
 - Newest movie first
+- An error page that auto retries every 5 seconds and then 15seconds after 3 failures if there's an API issue
