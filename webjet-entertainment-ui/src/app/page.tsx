@@ -25,6 +25,10 @@ export default function Page() {
   const mounted = useRef(true);
   const timeoutId = useRef<NodeJS.Timeout>();
 
+  const MinimumRetriesBeforeExtend = 3;
+  const RefreshNormal = 5000;    // 5 seconds
+  const RefreshExtended = 15000; // 15 seconds
+
   useEffect(() => {
     mounted.current = true;
 
@@ -35,12 +39,7 @@ export default function Page() {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         const sorted = data.sort((a: Movie, b: Movie) => b.year - a.year);
-        const MinimumRetriesBeforeExtend = 3;
-        const RefreshNormal = 5000;    // 5 seconds
-        const RefreshExtended = 15000; // 15 seconds
-
-
-
+        
         if (!mounted.current) return;
 
         setMovies(sorted);
